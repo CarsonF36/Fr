@@ -5,6 +5,8 @@ const audio = document.getElementById('audio')
 const cover = document.getElementById('cover')
 const progress = document.getElementById('progress')
 const progressContainer = document.getElementById('progress-container')
+const skipbtn = document.getElementById('next')
+const prevbtn = document.getElementById('prev')
 
 //Song Titles
 const songs = ['anthem', 'diss']
@@ -59,5 +61,33 @@ if(isPlaying) {
 }
 })
 
+function songEnded() {
+    songIndex++
+    if (songIndex >= songs.length) {
+        songIndex = 0
+    }
+    loadSong(songs[songIndex])
+    playSong()
+}
+
+skipbtn.addEventListener('click', () => {
+    songIndex++
+    if (songIndex >= songs.length) {
+        songIndex = 0
+    }
+    loadSong(songs[songIndex])
+    playSong()
+})
+
+prevbtn.addEventListener('click', () => {
+    songIndex--
+    if (songIndex < 0) {
+        songIndex = songs.length - 1
+    }
+    loadSong(songs[songIndex])
+    playSong()
+})
+
 audio.addEventListener('timeupdate', updateProgress)
 progressContainer.addEventListener('click', setProgress)
+audio.addEventListener('ended', songEnded)
