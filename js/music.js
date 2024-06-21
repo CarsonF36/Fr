@@ -9,7 +9,7 @@ const skipbtn = document.getElementById('next')
 const prevbtn = document.getElementById('prev')
 
 //Song Titles
-const songs = ['anthem', 'diss']
+const songs = ['anthem', 'diss', 'ghost-mode']
 
 // Keep Track of Song
 let songIndex = 1;
